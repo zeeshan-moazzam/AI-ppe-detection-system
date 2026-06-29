@@ -23,17 +23,15 @@
 
 <div align="center">
 
-| Camera 1 | Camera 2 | Camera 3 |
+| Camera 1 | Camera 2 | 
 |:---:|:---:|:---:|
-| ![Cam 1](assets/detection_cam1.jpg) | ![Cam 2](assets/detection_cam2.jpg) | ![Cam 3](assets/detection_cam3.jpg) |
+| ![Cam 1](https://github.com/user-attachments/assets/fa625e74-c6ba-4a22-ba84-a2442513503b    ) | ![Cam 2](https://github.com/user-attachments/assets/ea60a203-af2f-4163-b8f5-2cb99bc09e40) | 
 
-| Camera 4 | Camera 5 | Camera 6 |
+| Camera 3 | Camera 4 |
 |:---:|:---:|:---:|
-| ![Cam 4](assets/detection_cam4.jpg) | ![Cam 5](assets/detection_cam5.jpg) | ![Cam 6](assets/detection_cam6.jpg) |
+| ![Cam 3](https://github.com/user-attachments/assets/fd61436e-6439-47cd-a85e-22161d1de922) | ![Cam 4](https://github.com/user-attachments/assets/e879a35d-f997-4107-b3aa-34d910ab21ab) | 
 
-| Camera 7 | Camera 8 | Camera 9 |
-|:---:|:---:|:---:|
-| ![Cam 7](assets/detection_cam7.jpg) | ![Cam 8](assets/detection_cam8.jpg) | ![Cam 9](assets/detection_cam9.jpg) |
+
 
 </div>
 
