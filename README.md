@@ -1,4 +1,3 @@
-# AI-ppe-detection-system
 <div align="center">
 
 <img src="assets/logo.png" alt="PPE Detection Logo" width="180"/>
@@ -70,7 +69,9 @@ https://github.com/user-attachments/assets/sample_violation.mp4
 16. [Project Structure](#project-structure)
 17. [Dependencies](#dependencies)
 18. [Deployment Notes](#deployment-notes)
-19. [License](#license)
+19. [Scalability](#scalability)
+20. [Roadmap & Future Improvements](#roadmap--future-improvements)
+21. [License](#license)
 
 ---
 
@@ -881,6 +882,67 @@ Auto-generated and persisted in `.flask_secret` on first run. In `.gitignore` �
 
 ---
 
+## Scalability
+
+### Current Deployment
+
+This system is currently deployed with **9 IP cameras** at PT Indo Bharat Rayon. However, the architecture is not limited to 9 cameras in any way — the number is purely a function of available hardware.
+
+### How Many Cameras Can It Handle?
+
+The bottleneck is GPU throughput, not the software pipeline. Because `detect.py` uses batch inference (up to 16 frames per GPU call) and each camera only produces 1 frame per second, a single mid-range GPU can comfortably handle far more cameras than the current deployment:
+
+| GPU | Estimated Max Cameras (@ 1 FPS) |
+|---|---|
+| GTX 1060 / RTX 3050 | ~30–50 cameras |
+| RTX 3060 / 3070 | ~60–100 cameras |
+| RTX 3090 / 4090 | 150+ cameras |
+| Multi-GPU setup | Scales linearly |
+
+To add more cameras, simply add entries to `cameras.json` — no code changes needed. The `detect.py` Supervisor loop hot-reloads the config every 30 seconds and automatically creates queues and directories for new cameras.
+
+---
+
+## Roadmap & Future Improvements
+
+### Dual-Model Pipeline: YOLOv8 + YOLO World in Parallel
+
+The most impactful planned improvement is running **YOLOv8 and YOLO World side-by-side** in a parallel inference pipeline for higher detection accuracy:
+
+```
+Incoming Frame
+      │
+      ├──────────────────────────────────┐
+      ▼                                  ▼
+ YOLOv8 (custom-trained)          YOLO World (open-vocabulary)
+ Fast, high recall on known       Can detect novel PPE classes
+ PPE classes (helmet, vest...)    without retraining the model
+      │                                  │
+      └──────────────┬───────────────────┘
+                     ▼
+          Ensemble / Fusion Layer
+          • Union of bounding boxes
+          • Weighted confidence merging
+          • NMS (Non-Maximum Suppression)
+                     │
+                     ▼
+           Final Detection Result
+           (higher accuracy, fewer missed violations)
+```
+
+**Why this matters:**
+- **YOLOv8** (custom-trained on domain-specific PPE data) has high precision for known classes but can miss edge cases or novel equipment types
+- **YOLO World** is an open-vocabulary detection model — it can detect PPE items described in natural language (e.g., *"safety harness"*, *"reflective jacket"*) without retraining
+- Running both in parallel and fusing their outputs reduces both **false positives** and **false negatives**, giving a more reliable violation signal before it reaches `monitor.py`
+
+**Implementation plan:**
+- Load both models at startup in `detect.py`
+- Run them on the same batch simultaneously (using two GPU streams if available)
+- Merge results per-frame before writing to `detection.csv`
+- Keep downstream `monitor.py` and `app.py` completely unchanged
+
+---
+
 ## License
 
 This project is licensed for **Academic and Research Use** only.
@@ -912,4 +974,3 @@ zeeshanmoazzam22@gmail.com
 *Deployed and tested in a live industrial environment at PT Indo Bharat Rayon, monitoring 9 IP cameras across a manufacturing facility for real-time PPE compliance enforcement.*
 
 </div>
-
