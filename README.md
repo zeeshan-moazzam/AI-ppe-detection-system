@@ -967,5 +967,6 @@ See [LICENSE](LICENSE) for full terms.
 zeeshanmoazzam22@gmail.com
 
 *Deployed and tested in a live industrial environment at PT Indo Bharat Rayon, monitoring 9 IP cameras across a manufacturing facility for real-time PPE compliance enforcement.*
+<!-- docs: minor update -->
 
 </div>
