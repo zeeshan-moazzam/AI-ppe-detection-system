@@ -110,56 +110,56 @@ The system is built around a **loosely coupled 4-process pipeline** connected vi
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                     RTSP IP Cameras (9+)                          │
-│             Hikvision / generic IP cameras on LAN                 │
+│                     RTSP IP Cameras (9+)                         │
+│             Hikvision / generic IP cameras on LAN                │
 └────────────────────────────┬─────────────────────────────────────┘
                              │ RTSP (one connection per camera)
                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                     Process 1: app.py                             │
-│  Flask Web Server  │  RTSP Stream Manager  │  REST API            │
-│  • Owns ALL RTSP connections (prevents double-connect)            │
+│                     Process 1: app.py                            │
+│  Flask Web Server  │  RTSP Stream Manager  │  REST API           │
+│  • Owns ALL RTSP connections (prevents double-connect)           │
 │  • Serves /api/frame/<cam_id> → latest JPEG                      │
-│  • Dashboard UI (login, live feeds, charts, violations)           │
-│  • Camera / user / email CRUD operations                          │
+│  • Dashboard UI (login, live feeds, charts, violations)          │
+│  • Camera / user / email CRUD operations                         │
 │  • Queries ppe.db and serves data via REST API                   │
-│  • Sends email alerts and generates PDF reports                   │
-│  • http://localhost:5000                                          │
+│  • Sends email alerts and generates PDF reports                  │
+│  • http://localhost:5000                                         │
 └────────────────────────────┬─────────────────────────────────────┘
                              │ HTTP GET /api/frame/<cam_id> @ 1 FPS
                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Process 2: capture.py                           │
-│  Frame Capture Worker (one thread per camera)                     │
-│  • Polls app.py for the latest frame per camera                   │
+│                    Process 2: capture.py                         │
+│  Frame Capture Worker (one thread per camera)                    │
+│  • Polls app.py for the latest frame per camera                  │
 │  • Saves JPEGs → captured_frames/<cam_id>/<date>/<hour>/         │
-│  • Appends metadata → logs/capture.csv                            │
-│  • Auto-deletes frames older than 2 hours                         │
+│  • Appends metadata → logs/capture.csv                           │
+│  • Auto-deletes frames older than 2 hours                        │
 └────────────────────────────┬─────────────────────────────────────┘
                              │ logs/capture.csv (IPC via CSV tail)
                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Process 3: detect.py                            │
-│  YOLOv8 Batch Inference Engine                                    │
-│  • CaptureReader: tails capture.csv via byte-offset cursor        │
-│  • Pushes new rows into per-camera queues                         │
+│                    Process 3: detect.py                          │
+│  YOLOv8 Batch Inference Engine                                   │
+│  • CaptureReader: tails capture.csv via byte-offset cursor       │
+│  • Pushes new rows into per-camera queues                        │
 │  • BatchInferenceEngine: drains up to 16 frames per GPU call     │
-│  • Draws bounding boxes on annotated frames                       │
-│  • Saves detected_frames/ and violation_snapshots/                │
-│  • Appends results → logs/detection.csv                           │
+│  • Draws bounding boxes on annotated frames                      │
+│  • Saves detected_frames/ and violation_snapshots/               │
+│  • Appends results → logs/detection.csv                          │
 └────────────────────────────┬─────────────────────────────────────┘
                              │ logs/detection.csv (IPC via CSV tail)
                              ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│                    Process 4: monitor.py                           │
-│  Violation Streak Tracker                                         │
-│  • Polls detection.csv every 5 seconds                            │
-│  • Tracks consecutive violation frames per camera/type            │
-│  • FRAMES_THRESHOLD=3 → triggers confirmed violation              │
+│                    Process 4: monitor.py                         │
+│  Violation Streak Tracker                                        │
+│  • Polls detection.csv every 5 seconds                           │
+│  • Tracks consecutive violation frames per camera/type           │
+│  • FRAMES_THRESHOLD=3 → triggers confirmed violation             │
 │  • GAP_TOLERANCE=5 → handles brief occlusions                    │
-│  • COOLDOWN_MINUTES=2 → prevents duplicate alerts                 │
-│  • Creates MP4 clips using FFmpeg                                 │
-│  • Inserts records into ppe.db (SQLite)                           │
+│  • COOLDOWN_MINUTES=2 → prevents duplicate alerts                │
+│  • Creates MP4 clips using FFmpeg                                │
+│  • Inserts records into ppe.db (SQLite)                          │
 └────────────────────────────┬─────────────────────────────────────┘
                              │ ppe.db (SQLite, WAL mode)
                              ▼
