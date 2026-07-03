@@ -38,7 +38,8 @@
 
 > Whenever a violation is confirmed, the system automatically emails the Safety Department a report containing the violation type, camera, timestamp, and attached snapshot. Scheduled summary reports (with embedded charts) are also sent automatically at configurable intervals. Below is a sample report.
 
-[![Sample Violation Report](./docs/report-thumbnail.png)](./docs/sample_violation_report.pdf)
+[![Sample Violation Report](./docs/report-thumbnail.png)](<img width="371" height="65" alt="image" src="https://github.com/user-attachments/assets/278ce1da-3e98-42bf-8ca8-ab7cad66852f" />
+)
 
 *Click the image above to view a sample automated report (PDF).*
 
