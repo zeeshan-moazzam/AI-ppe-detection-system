@@ -34,13 +34,15 @@
 </div>
 ---
 
-## Violation Video Evidence
+## Automated Violation Reports
 
-> The system automatically records an MP4 clip whenever a sustained PPE violation (3+ consecutive frames) is confirmed. Below is a sample clip.
+> Whenever a violation is confirmed, the system automatically emails the Safety Department a report containing the violation type, camera, timestamp, and attached snapshot. Scheduled summary reports (with embedded charts) are also sent automatically at configurable intervals. Below is a sample report.
 
-https://github.com/user-attachments/assets/sample_violation.mp4
+[![Sample Violation Report](./docs/report-thumbnail.png)](./docs/sample_violation_report.pdf)
 
-> To embed your actual violation video on GitHub, upload `assets/sample_violation.mp4` as a GitHub release asset and replace the link above with the raw URL from your repository's releases page.
+*Click the image above to view a sample automated report (PDF).*
+
+> To add your actual report, export a sample PDF from the dashboard's **"Download PDF Report"** feature, save it as `docs/sample_violation_report.pdf`, generate a thumbnail of its first page as `docs/report-thumbnail.png`, and commit both to the repo.
 
 ---
 
