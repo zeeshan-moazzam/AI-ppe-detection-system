@@ -752,8 +752,8 @@ python clear_violations.py
 ---
 
 ## Project Structure
+---
 
-```
 AI-PPE-Detection/
 │
 ├── Core Processes
@@ -765,14 +765,10 @@ AI-PPE-Detection/
 │   └── reset_data.py           Full system reset utility
 │
 ├── Configuration
-│   ├── cameras.json            Active camera registry (create from .example)
-│   ├── cameras.json.example    Camera config template
-│   ├── users.json              User accounts with hashed passwords (create from .example)
-│   ├── users.json.example      User config template
-│   ├── email_config.json       SMTP settings (create from .example)
-│   ├── email_config.json.example
-│   ├── report_config.json      Scheduled report settings (create from .example)
-│   └── report_config.json.example
+│   ├── cameras.json            Active camera registry (sample/template config)
+│   ├── users.json              User accounts with hashed passwords (sample/template config)
+│   ├── email_config.json       SMTP settings (sample/template config)
+│   └── report_config.json      Scheduled report settings (sample/template config)
 │
 ├── ML Model
 │   ├── best.pt                 Custom-trained YOLOv8 model (not included — add your own)
