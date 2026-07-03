@@ -25,11 +25,11 @@
 
 | Camera 1 | Camera 2 |
 |:---:|:---:|
-| ![Cam 1](https://github.com/user-attachments/assets/fa625e74-c6ba-4a22-ba84-a2442513503b) | ![Cam 2](https://github.com/user-attachments/assets/ea60a203-af2f-4163-b8f5-2cb99bc09e40) |
+| <img src="https://github.com/user-attachments/assets/fa625e74-c6ba-4a22-ba84-a2442513503b" width="400"/> | <img src="https://github.com/user-attachments/assets/ea60a203-af2f-4163-b8f5-2cb99bc09e40" width="400"/> |
 
 | Camera 3 | Camera 4 |
 |:---:|:---:|
-| ![Cam 3](https://github.com/user-attachments/assets/fd61436e-6439-47cd-a85e-22161d1de922) | ![Cam 4](https://github.com/user-attachments/assets/63ba6838-8095-4f50-a327-3a8f3e12652b) |
+| <img src="https://github.com/user-attachments/assets/fd61436e-6439-47cd-a85e-22161d1de922" width="400"/> | <img src="https://github.com/user-attachments/assets/63ba6838-8095-4f50-a327-3a8f3e12652b" width="400"/> |
 
 </div>
 ---
