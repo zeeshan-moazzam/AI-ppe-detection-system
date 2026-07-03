@@ -29,7 +29,7 @@
 
 | Camera 3 | Camera 4 |
 |:---:|:---:|
-| ![Cam 3](https://github.com/user-attachments/assets/fd61436e-6439-47cd-a85e-22161d1de922) | ![Cam 4](https://github.com/user-attachments/assets/e879a35d-f997-4107-b3aa-34d910ab21ab) |
+| ![Cam 3](https://github.com/user-attachments/assets/fd61436e-6439-47cd-a85e-22161d1de922) | ![Cam 4](https://github.com/user-attachments/assets/63ba6838-8095-4f50-a327-3a8f3e12652b) |
 
 </div>
 ---
