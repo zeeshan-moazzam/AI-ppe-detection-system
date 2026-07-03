@@ -38,12 +38,10 @@
 
 > Whenever a violation is confirmed, the system automatically emails the Safety Department a report containing the violation type, camera, timestamp, and attached snapshot. Scheduled summary reports (with embedded charts) are also sent automatically at configurable intervals. Below is a sample report.
 
-[![Sample Violation Report](./docs/report-thumbnail.png)](<img width="371" height="65" alt="image" src="https://github.com/user-attachments/assets/278ce1da-3e98-42bf-8ca8-ab7cad66852f" />
-)
+[![Sample Violation Report](./docsreport-thumbnail.png)](./docssample_violation_report.pdf)
 
 *Click the image above to view a sample automated report (PDF).*
 
-> To add your actual report, export a sample PDF from the dashboard's **"Download PDF Report"** feature, save it as `docs/sample_violation_report.pdf`, generate a thumbnail of its first page as `docs/report-thumbnail.png`, and commit both to the repo.
 
 ---
 
