@@ -14,7 +14,7 @@
 [![SQLite](https://img.shields.io/badge/SQLite-Database-lightblue)](https://sqlite.org)
 [![License](https://img.shields.io/badge/License-Academic%20%26%20Research-yellow)](LICENSE)
 
-*Deployed in a live industrial environment at **PT Indo Bharat Rayon**, monitoring 9+ IP cameras across a manufacturing facility for real-time PPE compliance enforcement.*
+ *Deployed in a live industrial environment at **PT Indo Bharat Rayon**, monitoring 9+ IP cameras across a manufacturing facility for real-time PPE compliance enforcement.*
 
 </div>
 
