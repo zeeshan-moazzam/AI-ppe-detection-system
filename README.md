@@ -753,8 +753,8 @@ python clear_violations.py
 ---
 
 ## Project Structure
----
 
+```
 AI-PPE-Detection/
 │
 ├── Core Processes
