@@ -3,7 +3,7 @@
 
 <img src="https://github.com/user-attachments/assets/d9fa0409-43d3-4bad-b99d-0ac2b02955a9" width="200"/>
 
-# AI-Powered Industrial PPE Detection & Safety Surveillance System
+# AI- Powered Industrial PPE Detection & Safety Surveillance System
 
 **Real-time Personal Protective Equipment (PPE) violation detection using YOLOv8, multi-camera RTSP streams, and an automated 4-process alerting pipeline.**
 
